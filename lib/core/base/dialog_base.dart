@@ -11,7 +11,7 @@ final class DialogBase {
     return showDialog<T>(
       context: context,
       builder: builder,
-      barrierDismissible: false,
+      barrierDismissible: true,
       useSafeArea: false,
     );
   }

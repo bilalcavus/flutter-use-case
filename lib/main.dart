@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_use_case/home.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_use_case/development/view/home_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".dev.env");
   runApp(const MyApp());
 }
 
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Home(),
+      home: const HomeView(),
     );
   }
 }
