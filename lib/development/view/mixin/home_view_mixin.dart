@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_use_case/development/view/home_view.dart';
+import 'package:flutter_use_case/product/service/manager/login_service.dart';
 import 'package:flutter_use_case/product/service/manager/product_network_error_manager.dart';
-import 'package:flutter_use_case/product/service/manager/product_service_manager.dart';
+import 'package:flutter_use_case/product/state/container/product_state_items.dart';
 
 mixin HomeViewMixin on State<HomeView>{
 
-  late final ProductNetworkManager productNetworkManager;
+  late final LoginService loginService;
   late final ProductNetworkErrorManager productNetworkErrorManager;
 
   @override
   void initState() {
     super.initState();
-    productNetworkManager = ProductNetworkManager.base();
+    loginService = LoginService(ProductStateItems.productNetworkManager);
     productNetworkErrorManager = ProductNetworkErrorManager(context);
-    productNetworkManager.listenErrorState(
+    ProductStateItems.productNetworkManager.listenErrorState(
       onErrorStatus: productNetworkErrorManager.handleError
     );
   }
