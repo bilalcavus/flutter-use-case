@@ -1,9 +1,11 @@
 import 'package:flutter_use_case/core/data/model/user.dart';
+import 'package:flutter_use_case/product/service/interface/authentication_operation.dart';
 import 'package:flutter_use_case/product/service/manager/service_path.dart';
 import 'package:vexana/vexana.dart';
 
-final class LoginService {
-  LoginService(INetworkManager<EmptyModel> networkManager) : _networkManager = networkManager;
+final class LoginService extends AuthenticationOperation{
+  LoginService(INetworkManager<EmptyModel> networkManager) 
+    : _networkManager = networkManager;
 
   final INetworkManager<EmptyModel> _networkManager;
 

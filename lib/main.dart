@@ -5,15 +5,13 @@ import 'package:flutter_use_case/product/state/container/product_state_container
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".dev.env");
+  await dotenv.load(fileName: "assets/config/.dev.env");
   ProductStateContainer.setup();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

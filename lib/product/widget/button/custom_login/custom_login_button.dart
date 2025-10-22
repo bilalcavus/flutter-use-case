@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_use_case/product/widget/button/normal_button.dart';
-import 'package:flutter_use_case/utility/mixin/mounted_mixin.dart';
+import 'package:flutter_use_case/product/utility/mixin/mounted_mixin.dart';
 
 part 'custom_login_button_mixin.dart';
 
