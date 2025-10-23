@@ -4,7 +4,6 @@ import 'package:flutter_use_case/core/data/model/user.dart';
 import 'package:flutter_use_case/development/view/mixin/home_view_mixin.dart';
 import 'package:flutter_use_case/development/viewmodel/home_view_model.dart';
 import 'package:flutter_use_case/development/viewmodel/state/home_state.dart';
-import 'package:flutter_use_case/product/service/manager/product_service_manager.dart';
 import 'package:flutter_use_case/product/state/base/base_state.dart';
 
 part './widget/home_app_bar.dart';
@@ -25,6 +24,7 @@ class _HomeState extends BaseState<HomeView> with HomeViewMixin {
         appBar: const _HomeAppBar(),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
+            productViewModel.changeThemeMode(ThemeMode.dark);
             homeViewModel.changeLoading();
             await homeViewModel.fetchUsers();
           }
@@ -40,10 +40,6 @@ class _HomeState extends BaseState<HomeView> with HomeViewMixin {
       )
     );
   }
-
-  @override
-  // TODO: implement productNetworkManager
-  ProductNetworkManager get productNetworkManager => throw UnimplementedError();
 }
 
 final class _UserList extends StatelessWidget {
@@ -53,7 +49,7 @@ final class _UserList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<HomeViewModel, HomeState>(
       listener: (context, state) {
-        print(state.users);
+        print('users: ${state.users}');
       },
       child: BlocSelector<HomeViewModel, HomeState, List<User>>(
         selector: (state) {

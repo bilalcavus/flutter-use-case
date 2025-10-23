@@ -1,8 +1,8 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_use_case/development/viewmodel/state/home_state.dart';
 import 'package:flutter_use_case/product/service/interface/authentication_operation.dart';
+import 'package:flutter_use_case/product/state/base/base_cubit.dart';
 
-class HomeViewModel extends Cubit<HomeState> {
+class HomeViewModel extends BaseCubit<HomeState> {
   final AuthenticationOperation _authenticationOperationService;
 
   HomeViewModel({required AuthenticationOperation operationService})
